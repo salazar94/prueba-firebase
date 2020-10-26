@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./scss/stylel.css" />
+  </head>
+  <body>
+    <div id="circle" class="circle"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+
+    <!-- databasen firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAUIx9mXYeXrNeRg-teGUeqoqAo2Tudl2s',
+        authDomain: 'angular-first-6087f.firebaseapp.com',
+        databaseURL: 'https://angular-first-6087f.firebaseio.com',
+        projectId: 'angular-first-6087f',
+        storageBucket: 'angular-first-6087f.appspot.com',
+        messagingSenderId: '74435318646',
+        appId: '1:74435318646:web:3f554cbd5bb39f5023a057',
+        measurementId: 'G-PVM3JST3CD',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      //   var myname = prompt('enter name');
+
+      const container = document.querySelector('#container');
+      const word = document.querySelector('#texto');
+
+      const circle = document.querySelector('#circle');
+      circle.addEventListener('click', sendMessage);
+
+      function sendMessage() {
+        firebase.database().ref('post').push().set({
+          texto: '',
+        });
+       
+      }
+
+      firebase
+        .database()
+        .ref('post')
+        .on('child_added', function (params) {
+          circle.classList.toggle('light');
+          //   let list = `<li>${params.val().texto}</li>`;
+          //   container.innerHTML = list;
+          //   console.log(params.val().message);
+        });
+    </script>
+  </body>
+</html>

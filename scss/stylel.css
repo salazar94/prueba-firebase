@@ -1,0 +1,20 @@
+body {
+  background-color: aquamarine;
+  height: 90vh;
+  display: flex;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 400px;
+  width: 500px;
+  background-color: blue;
+  box-shadow: 0 0 20px 15px #252acb;
+  margin: auto;
+}
+
+.circle.light {
+  background-color: red;
+  box-shadow: 0 0 20px 7px #ca3817;
+}
+/*# sourceMappingURL=stylel.css.map */
